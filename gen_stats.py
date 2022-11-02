@@ -119,8 +119,8 @@ def check_ops(op: str, metar: Metar.Metar) -> bool:
 
 
 daily_stats = dict()
-start_date = datetime.datetime(day=1, month=1, year=2009, hour=0, minute=0)
-end_date = datetime.datetime(day=31, month=12, year=2019, hour=23, minute=59)
+start_date = datetime.datetime(day=1, month=8, year=2022, hour=0, minute=0)
+end_date = datetime.datetime(day=30, month=10, year=2022, hour=0, minute=1)
 
 # Create data structure
 current_date = start_date
@@ -151,7 +151,7 @@ while current_date < end_date:
 
     current_date += datetime.timedelta(days=1)
 
-with open('data/compiled2009-2019.txt', 'r', encoding='utf8') as file_handle:
+with open('data/sbkp.txt', 'r', encoding='utf8') as file_handle:
     data = file_handle.readlines()
 
 for line in data:
@@ -302,9 +302,6 @@ while current_date < end_date:
 
 month_stats = dict()
 
-start_date = datetime.datetime(day=1, month=1, year=2009, hour=0, minute=0)
-end_date = datetime.datetime(day=31, month=12, year=2019, hour=23, minute=59)
-
 # Create data structure
 current_date = start_date
 while current_date < end_date:
@@ -350,6 +347,6 @@ labels = {
 d = pd.DataFrame.from_dict(daily_stats, orient='index').rename(columns=labels)
 m = pd.DataFrame.from_dict(month_stats, orient='index').rename(columns=labels)
 
-d.to_excel('estatisticas diárias.xlsx')
-m.to_excel('estatisticas mensais.xlsx')
+d.to_excel('estatisticas diárias 2.xlsx')
+m.to_excel('estatisticas mensais 2.xlsx')
 print()
